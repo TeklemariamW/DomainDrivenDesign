@@ -2,6 +2,7 @@
 using Entities;
 using LoggerService;
 using Microsoft.EntityFrameworkCore;
+using Repository;
 
 namespace API.Extensions
 {
@@ -34,6 +35,10 @@ namespace API.Extensions
             var connectionString = config["sqlserverconnection:connectionString"];
 
             services.AddDbContext<RepositoryContext>(o => o.UseSqlServer(connectionString));
+        }
+        public static void ConfigureRepositoryWrapper(this IServiceCollection services)
+        {
+            services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
         }
     }
 }
