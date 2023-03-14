@@ -1,6 +1,8 @@
 
 using API.Extensions;
+using Entities;
 using Microsoft.AspNetCore.HttpOverrides;
+using Microsoft.EntityFrameworkCore;
 using NLog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -25,6 +27,16 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 //builder.Services.AddEndpointsApiExplorer();
 //builder.Services.AddSwaggerGen();
+
+//var connectionStringCosmosDb = builder.Configuration.GetValue<string>("ConnectionString:CosmosDb:AccountKey");
+//var cosmosDbName = builder.Configuration.GetValue<string>("ConnectionString:CosmosDb:DbName");
+
+////builder.Services.AddDbContext<LogMessageDbContext>(options =>
+////        options.UseCosmos(connectionStringCosmosDb, cosmosDbName));
+//builder.Services.AddDbContext<RepositoryContext>(options =>
+//        options.UseCosmos(connectionStringCosmosDb, cosmosDbName));
+
+
 
 var app = builder.Build();
 

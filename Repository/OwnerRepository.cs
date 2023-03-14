@@ -33,8 +33,15 @@ namespace Repository
 
         public async Task<Owner> GetOwnerByIdAsync(Guid ownerid)
         {
-            return await FindByCondition(x => x.OwnerId.Equals(ownerid))
+            return await FindByCondition(x => x.Id.Equals(ownerid))
                 .FirstOrDefaultAsync();
+        }
+
+        public Owner GetOwnerWithDetails(Guid ownerId)
+        {
+            return FindByCondition(owner => owner.Id.Equals(ownerId))
+                .Include(ac => ac.Accounts)
+                .FirstOrDefault();
         }
     }
 }

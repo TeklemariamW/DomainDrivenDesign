@@ -6,7 +6,7 @@ namespace Contracts
     {
         Task<IEnumerable<Owner>> GetAllOwnersAsync();
         Task<Owner> GetOwnerByIdAsync(Guid ownerId);
-
+        Owner GetOwnerWithDetails(Guid ownerId);
 
         //IEnumerable<Owner> GetAllOwners();
         //Owner GetOwnerById(Guid ownerId);
